@@ -14,12 +14,12 @@ class objPos
 
         void setObjPos(objPos o);        
         void setObjPos(int xPos, int yPos, char sym);  
-        void getObjPos(objPos &returnPos);
+        void getObjPos(objPos &returnPos); // pass by reference 
         char getSymbol();
 
-        bool isPosEqual(const objPos* refPos);
+        bool isPosEqual(const objPos* refPos);//pass by pointer
         
-        char getSymbolIfPosEqual(const objPos* refPos);
+        char getSymbolIfPosEqual(const objPos* refPos); // pass by pointer
 };
 
 #endif

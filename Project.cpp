@@ -1,13 +1,15 @@
 #include <iostream>
 #include "MacUILib.h"
 #include "objPos.h"
+#include "GameMechs.h"
+#include "Player.h"
 
 
 using namespace std;
 
 #define DELAY_CONST 100000
 
-bool exitFlag;
+int exitFlag; 
 
 void Initialize(void);
 void GetInput(void);
