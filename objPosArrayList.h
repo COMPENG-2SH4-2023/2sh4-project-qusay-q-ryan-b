@@ -1,7 +1,7 @@
 #ifndef OBJPOS_ARRAYLIST_H
 #define OBJPOS_ARRAYLIST_H
 
-#define ARRAY_MAX_CAP 200
+#define ARRAY_MAX_CAP 256
 
 #include "objPos.h"
 
@@ -10,7 +10,7 @@ class objPosArrayList
     private:
         objPos* aList;
         int sizeList;
-        int sizeArray; //array capacity
+        int sizeArray; //number of array 
 
     public:
         objPosArrayList();
@@ -22,7 +22,6 @@ class objPosArrayList
         void removeHead();
         void removeTail();
 
-        int getSize(); 
         
         void getHeadElement(objPos &returnPos);
         void getTailElement(objPos &returnPos);

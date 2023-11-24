@@ -11,6 +11,7 @@ using namespace std;
 
 GameMechs* myGame; 
 Player* myPlayer; 
+char input; 
 
 void Initialize(void);
 void GetInput(void);
@@ -52,6 +53,7 @@ void Initialize(void)
 
 void GetInput(void)
 {
+    input = myGame->getInput(); 
 
 }
 
@@ -59,8 +61,10 @@ void RunLogic(void)
 {
     myPlayer->updatePlayerDir(); 
     myPlayer->movePlayer(); 
-    
-    myGame->clearInput(); 
+    if(input == '\t'){
+        myGame->setExitTrue();
+    }
+    myGame->clearInput();
 }
 
 void DrawScreen(void)
@@ -84,7 +88,7 @@ void DrawScreen(void)
 
             else if ( i == tempPos.y && j == tempPos.x )
             { 
-                MacUILib_printf("%c", '@');
+                MacUILib_printf("%c", tempPos.symbol);
             }
             else{
         

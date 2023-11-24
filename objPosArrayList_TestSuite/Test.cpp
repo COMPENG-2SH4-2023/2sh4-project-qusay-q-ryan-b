@@ -5,10 +5,11 @@
 #include "objPos.h"
 #include "objPosArrayList.h"
 #include <iostream>
-
+using namespace std; 
 // WARNING!!  This test suite does not contain any test cases for accessing elements out-of-bound.
 //
 // You must deploy exception throwing for all out-of-bound accesses.
+
 
 
 // Test Case 1 - Constructor Tester
