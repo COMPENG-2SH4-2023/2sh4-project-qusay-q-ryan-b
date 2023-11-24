@@ -9,7 +9,8 @@ using namespace std;
 
 #define DELAY_CONST 100000
 
-int exitFlag; 
+GameMechs* myGame; 
+Player* myPlayer; 
 
 void Initialize(void);
 void GetInput(void);
@@ -43,22 +44,29 @@ void Initialize(void)
     MacUILib_init();
     MacUILib_clearScreen();
 
+    myGame = new GameMechs(26,13); 
+    myPlayer = new Player(myGame); 
+
     exitFlag = false;
 }
 
 void GetInput(void)
 {
-   
+
 }
 
 void RunLogic(void)
 {
-    
+    myPlayer->updatePlayerDir(); 
 }
 
 void DrawScreen(void)
 {
     MacUILib_clearScreen();    
+    objPos tempPos; 
+    myPlayer.getPlayerPos(tempPos); 
+    MacUILib_printf("Board size is: %dn%d, Player Pos: <%d,%d> + %c", myGame->getBoardSizeX(), myGame->getBoardSizeY()
+    ,tempPos.x, tempPos.y, tempPos.symbol); 
 
 }
 

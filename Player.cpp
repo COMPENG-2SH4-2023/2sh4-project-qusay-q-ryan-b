@@ -7,6 +7,7 @@ Player::Player(GameMechs* thisGMRef)
     myDir = STOP;
 
     // more actions to be included
+    
 }
 
 
@@ -18,15 +19,15 @@ Player::~Player()
 void Player::getPlayerPos(objPos &returnPos)
 {
     // return the reference to the playerPos arrray list
-    returnPos.x = playerPos.x;
-    returnPos.y = playerPos.y;
-    returnPos.symbol = playerPos.symbol;
+    returnPos.setObjPos(playerPos.x, playerPos.y,playerPos.symbol); 
+ 
 }
 
 void Player::updatePlayerDir()
 {
+    char input = mainGameMechsRef->getInput(); 
     // PPA3 input processing logic
-    switch(mainGameMechsRef->getInput())
+    switch(input)
     {                      
         case 'w':
             if (myDir == LEFT || myDir == RIGHT || myDir == STOP){
