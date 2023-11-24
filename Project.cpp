@@ -26,7 +26,7 @@ int main(void)
 
     Initialize();
 
-    while(exitFlag == false)  
+    while(myGame->getExitFlagStatus() == false)  
     {
         GetInput();
         RunLogic();
@@ -47,7 +47,7 @@ void Initialize(void)
     myGame = new GameMechs(26,13); 
     myPlayer = new Player(myGame); 
 
-    exitFlag = false;
+
 }
 
 void GetInput(void)
@@ -64,9 +64,32 @@ void DrawScreen(void)
 {
     MacUILib_clearScreen();    
     objPos tempPos; 
-    myPlayer.getPlayerPos(tempPos); 
-    MacUILib_printf("Board size is: %dn%d, Player Pos: <%d,%d> + %c", myGame->getBoardSizeX(), myGame->getBoardSizeY()
-    ,tempPos.x, tempPos.y, tempPos.symbol); 
+    myPlayer->getPlayerPos(tempPos); // this get the player pos and assigns it to temp position
+    //sets the tempPos into the playerPos x,y and symbo
+
+     int i, j; 
+    for ( i =0; i < myGame->getBoardSizeY(); i++) 
+    {
+        for(j=0; j < myGame->getBoardSizeY(); j++)
+        {
+
+            if( i == 0 || j == 0 || i == myGame->getBoardSizeY()-1 || j == myGame->getBoardSizeX() -1) 
+            {
+                
+                MacUILib_printf("%c", '#'); 
+            }
+
+            else if ( i == tempPos.x && j == tempPos.y )
+            { 
+                MacUILib_printf("%c", tempPos.symbol);
+            }
+            else{
+        
+                MacUILib_printf("%c", ' '); 
+            }
+        }
+        MacUILib_printf("\n");
+    }
 
 }
 
