@@ -27,4 +27,4 @@ class objPosArrayList
         void getElement(objPos &returnPos, int index);
 };
 
-#endif
+#e

@@ -41,16 +41,3 @@ void objPosArrayList::removeTail()
 }
 
 void objPosArrayList::getHeadElement(objPos &returnPos)
-{
-
-}
-
-void objPosArrayList::getTailElement(objPos &returnPos)
-{
-
-}
-
-void objPosArrayList::getElement(objPos &returnPos, int index)
-{
-
-}
