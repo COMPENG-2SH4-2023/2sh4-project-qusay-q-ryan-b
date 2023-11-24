@@ -25,4 +25,7 @@ class objPosArrayList
         
         void getHeadElement(objPos &returnPos);
         void getTailElement(objPos &returnPos);
-        void getElement(objPos &returnPos, in
+        void getElement(objPos &returnPos, int index);
+};
+
+#endif

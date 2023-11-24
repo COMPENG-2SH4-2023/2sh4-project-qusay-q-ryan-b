@@ -58,6 +58,7 @@ void Player::updatePlayerDir()
         default:
             break;
     }
+    mainGameMechsRef->setInput(0);
 }
 
 void Player::movePlayer()

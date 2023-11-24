@@ -383,4 +383,5 @@ bool runAllTests(int argc, char const *argv[]) {
 }
 
 int main(int argc, char const *argv[]) {
-    return runAllTests(argc, argv) ? EXIT_SUCC
+    return runAllTests(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
+}
