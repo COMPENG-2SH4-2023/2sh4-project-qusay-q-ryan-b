@@ -58,19 +58,22 @@ void GetInput(void)
 void RunLogic(void)
 {
     myPlayer->updatePlayerDir(); 
+    myPlayer->movePlayer(); 
+    
+    myGame->clearInput(); 
 }
 
 void DrawScreen(void)
 {
     MacUILib_clearScreen();    
     objPos tempPos; 
+
     myPlayer->getPlayerPos(tempPos); // this get the player pos and assigns it to temp position
     //sets the tempPos into the playerPos x,y and symbo
-
-     int i, j; 
+    int i, j; 
     for ( i =0; i < myGame->getBoardSizeY(); i++) 
     {
-        for(j=0; j < myGame->getBoardSizeY(); j++)
+        for(j=0; j < myGame->getBoardSizeX(); j++)
         {
 
             if( i == 0 || j == 0 || i == myGame->getBoardSizeY()-1 || j == myGame->getBoardSizeX() -1) 
@@ -79,9 +82,9 @@ void DrawScreen(void)
                 MacUILib_printf("%c", '#'); 
             }
 
-            else if ( i == tempPos.x && j == tempPos.y )
+            else if ( i == tempPos.y && j == tempPos.x )
             { 
-                MacUILib_printf("%c", tempPos.symbol);
+                MacUILib_printf("%c", '@');
             }
             else{
         
@@ -104,4 +107,6 @@ void CleanUp(void)
     MacUILib_clearScreen();    
   
     MacUILib_uninit();
+    delete myGame; 
+    delete myPlayer; 
 }

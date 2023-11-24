@@ -81,7 +81,7 @@ void Player::movePlayer()
     }
     if (playerPos.y == 0){
             playerPos.y = mainGameMechsRef->getBoardSizeY() - 2;
-        }
+    }
     if (playerPos.y == mainGameMechsRef->getBoardSizeY() - 1){
         playerPos.y = 1;
     }

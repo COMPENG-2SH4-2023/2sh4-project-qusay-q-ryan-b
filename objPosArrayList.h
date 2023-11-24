@@ -10,7 +10,7 @@ class objPosArrayList
     private:
         objPos* aList;
         int sizeList;
-        int sizeArray;
+        int sizeArray; //array capacity
 
     public:
         objPosArrayList();
@@ -21,6 +21,8 @@ class objPosArrayList
         void insertTail(objPos thisPos);
         void removeHead();
         void removeTail();
+
+        int getSize(); 
         
         void getHeadElement(objPos &returnPos);
         void getTailElement(objPos &returnPos);
