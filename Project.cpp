@@ -80,6 +80,7 @@ void RunLogic(void)
     if (tempPos.x == tempFoodPos.x && tempPos.y == tempFoodPos.y)
     {   
         myFood->generateFood(tempPos);     
+        myGame->incrementScore(); 
     }
 }
 
@@ -118,6 +119,7 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }
+    MacUILib_printf("Your Current Score is: %d", myGame->getScore()); 
 
 }
 
