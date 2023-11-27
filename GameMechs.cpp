@@ -99,7 +99,7 @@ void GameMechs::clearInput()
 
 void GameMechs::incrementScore()
 {
-
+    score++; 
 }
 // this needs to be implemented later on in the game
 //when there is food on the board
