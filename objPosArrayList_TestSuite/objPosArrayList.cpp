@@ -22,24 +22,28 @@ int objPosArrayList::getSize()
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
-    for(int i = listSize; i>0; i--){
-        aList[i] = aList[i-1];
+    if(listSize < ARRAY_MAX_CAP){
+        for(int i = listSize; i>0; i--){
+            aList[i].setObjPos(aList[i-1]);
+        }
+        aList[0].setObjPos(thisPos);
+        listSize++;
     }
-    aList[0] = thisPos;
-    listSize++;
 }
 
 void objPosArrayList::insertTail(objPos thisPos)
 {
-    aList[listSize] = thisPos;
-    listSize++;
+    if(listSize < ARRAY_MAX_CAP){
+        aList[listSize].setObjPos(thisPos);
+        listSize++;
+    }
 }
 
 void objPosArrayList::removeHead()
 {
     if(listSize>0){
         for(int i = 0; i < listSize-1; i++){
-            aList[i] = aList[i+1];
+            aList[i].setObjPos(aList[i+1]);
         }
         listSize--;
     }
