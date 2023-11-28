@@ -21,15 +21,27 @@ Food::~Food()
     //nothing to be deleteed
 }
 
-void Food::generateFood(objPos blockoff)
+void Food::generateFood(objPosArrayList *blockoff)
 {
     int randX = 0 , randY = 0; 
+    objPos temp;
+    bool flag = false;
     // change for all elements of player
-    do{
+    while(!flag){
         randX = (rand() % ( mainGameMechsRef->getBoardSizeX()-2)) + 1; 
         randY = (rand() % (mainGameMechsRef->getBoardSizeY()-2)) + 1; 
         foodPos.setObjPos(randX, randY, 'o');
-    }while(blockoff.x == foodPos.x && blockoff.y == foodPos.y); 
+        for(int i = 0; i < blockoff->getSize(); i++){
+            blockoff->getElement(temp, i);
+            if(temp.x == randX && temp.y == randY){
+                break;
+            }
+            else{
+                flag = true;
+            }
+        }
+
+    }
 }
 
 void Food::getFoodPos(objPos &returnPos){

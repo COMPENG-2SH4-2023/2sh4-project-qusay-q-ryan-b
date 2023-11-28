@@ -50,11 +50,10 @@ void Initialize(void)
 
     myGame = new GameMechs(26,13); 
     myPlayer = new Player(myGame); 
-    myFood = new Food(myGame); 
+    myFood = new Food(myGame);
+    objPosArrayList *tempBody = myPlayer->getPlayerPos();
 
-    objPos tempPos(1, 1, '0');
-
-    myFood->generateFood(tempPos);
+    myFood->generateFood(tempBody);
 
 }
 
@@ -81,7 +80,7 @@ void RunLogic(void)
 
     if (tempPos.x == tempFoodPos.x && tempPos.y == tempFoodPos.y)
     {   
-        myFood->generateFood(tempPos);     
+        myFood->generateFood(tempBody);     
         myGame->incrementScore(); 
     }
 }
