@@ -23,26 +23,31 @@ Food::~Food()
 
 void Food::generateFood(objPosArrayList *blockoff)
 {
-    int randX = 0 , randY = 0; 
+    int randX = 0, randY = 0;
     objPos temp;
     bool flag = false;
+
     // change for all elements of player
-    while(!flag){
-        randX = (rand() % ( mainGameMechsRef->getBoardSizeX()-2)) + 1; 
-        randY = (rand() % (mainGameMechsRef->getBoardSizeY()-2)) + 1; 
+    while (!flag)
+    {
+        randX = (rand() % (mainGameMechsRef->getBoardSizeX() - 2)) + 1;
+        randY = (rand() % (mainGameMechsRef->getBoardSizeY() - 2)) + 1;
         foodPos.setObjPos(randX, randY, 'o');
-        for(int i = 0; i < blockoff->getSize(); i++){
+
+        flag = true;  
+
+        for (int i = 0; i < blockoff->getSize(); i++)
+        {
             blockoff->getElement(temp, i);
-            if(temp.x == randX && temp.y == randY){
+            if (temp.x == randX && temp.y == randY)
+            {
+                flag = false;  
                 break;
             }
-            else{
-                flag = true;
-            }
         }
-
     }
 }
+
 
 void Food::getFoodPos(objPos &returnPos){
 
