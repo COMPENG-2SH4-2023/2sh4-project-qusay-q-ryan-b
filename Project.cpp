@@ -39,7 +39,6 @@ int main(void)
     }
 
     CleanUp();
-
 }
 
 
@@ -65,13 +64,13 @@ void GetInput(void)
 
 void RunLogic(void)
 {
+    objPos tempFoodPos; 
+    myFood->getFoodPos(tempFoodPos);
     myPlayer->updatePlayerDir(); 
-    myPlayer->movePlayer(); 
+    myPlayer->movePlayer(tempFoodPos); 
     objPos tempPos; 
     objPosArrayList* tempBody = myPlayer->getPlayerPos(); 
     tempBody->getHeadElement(tempPos);
-    objPos tempFoodPos; 
-    myFood->getFoodPos(tempFoodPos); 
     if(input == '\t'){
         myGame->setExitTrue();
     }
@@ -143,9 +142,14 @@ void LoopDelay(void)
 
 void CleanUp(void)
 {
-    MacUILib_clearScreen();    
+    MacUILib_clearScreen(); 
+
+    if(myGame->getExitFlagStatus()){
+        MacUILib_printf("You lost, Your score was: %d", myGame->getScore());
+    }   
   
     MacUILib_uninit();
     delete myGame; 
-    delete myPlayer; 
+    delete myPlayer;
+    delete myFood; 
 }
