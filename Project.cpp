@@ -4,6 +4,7 @@
 #include "GameMechs.h"
 #include "Player.h"
 #include "Food.h"
+#include "objPosArrayList.h"
 
 
 using namespace std;
@@ -50,10 +51,10 @@ void Initialize(void)
     myGame = new GameMechs(26,13); 
     myPlayer = new Player(myGame); 
     myFood = new Food(myGame); 
-    objPos tempPos;
-    myPlayer->getPlayerPos(tempPos); //since tempPos in generateFood is the blockoff so that the food does not generate at the same place
-    myFood->generateFood(tempPos); 
 
+    objPos tempPos(1, 1, '0');
+
+    myFood->generateFood(tempPos);
 
 }
 
@@ -68,7 +69,8 @@ void RunLogic(void)
     myPlayer->updatePlayerDir(); 
     myPlayer->movePlayer(); 
     objPos tempPos; 
-    myPlayer->getPlayerPos(tempPos); 
+    objPosArrayList* tempBody = myPlayer->getPlayerPos(); 
+    tempBody->getHeadElement(tempPos);
     objPos tempFoodPos; 
     myFood->getFoodPos(tempFoodPos); 
     if(input == '\t'){
@@ -87,9 +89,11 @@ void RunLogic(void)
 void DrawScreen(void)
 {
     MacUILib_clearScreen();    
-    objPos tempPos; 
-    objPos tempFoodPos; 
-    myPlayer->getPlayerPos(tempPos); // this get the player pos and assigns it to temp position
+    objPosArrayList* playerBody = myPlayer->getPlayerPos();
+    objPos tempBody;
+    bool draw;
+
+    objPos tempFoodPos;
     //sets the tempPos into the playerPos x,y and symbol
     myFood->getFoodPos(tempFoodPos);
     int i, j; 
@@ -98,16 +102,25 @@ void DrawScreen(void)
         for(j=0; j < myGame->getBoardSizeX(); j++)
         {
 
+            draw = false;
+            for(int k = 0; k < playerBody->getSize(); k++){
+                playerBody->getElement(tempBody, k);
+                if(tempBody.x == j && tempBody.y == i){
+                    MacUILib_printf("%c", tempBody.symbol);
+                    draw = true;
+                    break;
+                }
+            }
+
+            if(draw) continue;
+
             if( i == 0 || j == 0 || i == myGame->getBoardSizeY()-1 || j == myGame->getBoardSizeX() -1) 
             {
                 
                 MacUILib_printf("%c", '#'); 
             }
 
-            else if ( i == tempPos.y && j == tempPos.x )
-            { 
-                MacUILib_printf("%c", tempPos.symbol);
-            }
+        
             else if ( i == tempFoodPos.y && j == tempFoodPos.x)
             {
                 MacUILib_printf("%c", tempFoodPos.symbol); 

@@ -24,6 +24,7 @@ Food::~Food()
 void Food::generateFood(objPos blockoff)
 {
     int randX = 0 , randY = 0; 
+    // change for all elements of player
     do{
         randX = (rand() % ( mainGameMechsRef->getBoardSizeX()-2)) + 1; 
         randY = (rand() % (mainGameMechsRef->getBoardSizeY()-2)) + 1; 

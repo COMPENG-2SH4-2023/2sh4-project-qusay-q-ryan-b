@@ -10,7 +10,7 @@ class objPosArrayList
     private:
         objPos* aList;
         int sizeList;
-        int sizeArray; //number of array 
+        int arrayCapacity;
 
     public:
         objPosArrayList();
