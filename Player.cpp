@@ -36,7 +36,7 @@ void Player::updatePlayerDir()
 {
     char input = mainGameMechsRef->getInput(); 
     // PPA3 input processing logic
-    switch(input)
+    switch(input) 
     {                      
         case 'w':
             if (myDir == LEFT || myDir == RIGHT || myDir == STOP){
