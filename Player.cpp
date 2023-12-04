@@ -35,8 +35,13 @@ objPosArrayList* Player::getPlayerPos()
 void Player::updatePlayerDir()
 {
     char input = mainGameMechsRef->getInput(); 
+<<<<<<< HEAD
     // PPA3 input processing logic for changing direction
     switch(input)
+=======
+    // PPA3 input processing logic
+    switch(input) 
+>>>>>>> 295083434e9aa7fd10ef5b2bcef1183efa4da8f3
     {                      
         case 'w':
             if (myDir == LEFT || myDir == RIGHT || myDir == STOP){
